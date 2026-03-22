@@ -149,11 +149,7 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 /*
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan)
-{
-    can_callback(hcan);
-}
-    */
+ */
 /* USER CODE END 4 */
 
 /**

@@ -7,6 +7,7 @@ add_library(app STATIC
     src/app.cpp
     src/robomas_can.cpp
     src/robomas_peripheral.cpp
+    src/pid_controller.cpp
 )
 
 target_include_directories(app PUBLIC
