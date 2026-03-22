@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(app STATIC
     src/app.cpp
     src/robomas_can.cpp
+    src/robomas_peripheral.cpp
 )
 
 target_include_directories(app PUBLIC

@@ -82,13 +82,33 @@ void robomas_can::process_data(MotorFeedback* feedback)
     // 後ほど実装
 }
 
-void robomas_can::can_callback(CAN_HandleTypeDef* hcan, uint32_t RxFifo0ITs)
+// bxCANは割り込みフラグが一つしかない。なので引数は一つ
+void robomas_can::can_callback(CAN_HandleTypeDef* hcan)
 {
-    if ((hcan->Instance == hcan1.Instance && RxFifo0ITs == CAN_IT_RX_FIFO0_MSG_PENDING) ||
-        (hcan->Instance == hcan2.Instance && RxFifo0ITs == CAN_IT_RX_FIFO0_MSG_PENDING)) {
+    if ((hcan->Instance == hcan1.Instance) || (hcan->Instance == hcan2.Instance)) {
         if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK) {
             Error_Handler();
         }
         receive_data(RxHeader.StdId, RxData);
     }
+}
+
+void robomas_can::can1_current(
+    int16_t motor1_current, int16_t motor2_current, int16_t motor3_current, int16_t motor4_current
+)
+{
+    current_1->motor1_current = motor1_current;
+    current_1->motor2_current = motor2_current;
+    current_1->motor3_current = motor3_current;
+    current_1->motor4_current = motor4_current;
+}
+
+void robomas_can::can2_current(
+    int16_t motor5_current, int16_t motor6_current, int16_t motor7_current, int16_t motor8_current
+)
+{
+    current_2->motor5_current = motor5_current;
+    current_2->motor6_current = motor6_current;
+    current_2->motor7_current = motor7_current;
+    current_2->motor8_current = motor8_current;
 }

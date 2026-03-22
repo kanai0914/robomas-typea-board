@@ -19,8 +19,23 @@ private:
 
 public:
     void init(CAN_HandleTypeDef* hcan);
-    void send_data(CAN_HandleTypeDef* hcan, uint16_t can_id, uint8_t* data, uint8_t len);
-    void can_callback(CAN_HandleTypeDef* hdcan, uint32_t RxFifo0ITs);
+    void send_data(CAN_HandleTypeDef* hcan, uint16_t can_id, uint8_t data[8], uint8_t len);
+    void can_callback(CAN_HandleTypeDef* hdcan);
     void receive_data(uint16_t can_id, uint8_t data[8]);
     void process_data(MotorFeedback* feedback);
+
+    // 可読性を上げるために独立
+    void can1_current(
+        int16_t motor1_current,
+        int16_t motor2_current,
+        int16_t motor3_current,
+        int16_t motor4_current
+    );
+
+    void can2_current(
+        int16_t motor5_current,
+        int16_t motor6_current,
+        int16_t motor7_current,
+        int16_t motor8_current
+    );
 };
