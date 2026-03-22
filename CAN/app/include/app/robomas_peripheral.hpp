@@ -37,3 +37,20 @@ struct MotorFeedback {
     uint8_t temp;
     uint8_t spare;
 } __attribute__((__packed__));
+
+struct MotorCurrent_can1 {
+    int16_t motor1_current = 0;
+    int16_t motor2_current = 0;
+    int16_t motor3_current = 0;
+    int16_t motor4_current = 0;
+} __attribute__((__packed__));
+
+struct MotorCurrent_can2 {
+    int16_t motor5_current = 0;
+    int16_t motor6_current = 0;
+    int16_t motor7_current = 0;
+    int16_t motor8_current = 0;
+} __attribute__((__packed__));
+
+extern MotorCurrent_can1* current_1;
+extern MotorCurrent_can2* current_2;
