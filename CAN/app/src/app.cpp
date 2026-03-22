@@ -12,7 +12,7 @@ MotorCurrent_can2 current_2_data;
 MotorCurrent_can1* current_1 = &current_1_data;
 MotorCurrent_can2* current_2 = &current_2_data;
 
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan)
+extern "C" void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan)
 {
     can.can_callback(hcan);
 }
@@ -35,5 +35,5 @@ void loop()
     can.send_data(&hcan1, M_SEND_CANID, (uint8_t*)current_1, 8);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_11);
 
-    HAL_Delay(1);
+    HAL_Delay(100);
 }
