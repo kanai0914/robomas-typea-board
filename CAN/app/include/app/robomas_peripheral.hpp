@@ -31,7 +31,7 @@
 #define motor_8 0x208
 
 struct MotorFeedback {
-    uint32_t angle;
+    uint16_t angle;
     int16_t speed;
     int16_t current;
     uint8_t temp;

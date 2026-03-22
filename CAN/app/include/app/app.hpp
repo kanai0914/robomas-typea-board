@@ -8,7 +8,6 @@ extern "C" {
 
 void setup();
 void loop();
-void can_callback(CAN_HandleTypeDef* hcan);
 #ifdef __cplusplus
 }
 #endif
