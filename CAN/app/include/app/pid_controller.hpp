@@ -19,4 +19,5 @@ private:
 
 public:
     float pid_controll(MotorFeedback* speed, int16_t target_speed);
+    void set_gain(float p_gain, float i_gain, float d_gain);
 };
