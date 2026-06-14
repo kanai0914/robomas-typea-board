@@ -37,20 +37,21 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
-# Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined library search paths
+    micro_ros_stm32cubemx_utils/microros_static_library/libmicroros
 )
 
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include
+)
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user sources here
+    micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_transport.c
+    micro_ros_stm32cubemx_utils/extra_sources/microros_time.c
+    micro_ros_stm32cubemx_utils/extra_sources/microros_allocators.c
+    micro_ros_stm32cubemx_utils/extra_sources/custom_memory_manager.c
 )
 
-# Add include paths
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined include paths
-)
 
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
@@ -63,6 +64,5 @@ list(REMOVE_ITEM CMAKE_C_IMPLICIT_LINK_LIBRARIES ob)
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
-    # Add user defined libraries
+    microros
 )
