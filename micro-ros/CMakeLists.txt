@@ -46,7 +46,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 )
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_transport.c
+    micro_ros_stm32cubemx_utils/extra_sources/microros_transports/usb_cdc_transport.c
     micro_ros_stm32cubemx_utils/extra_sources/microros_time.c
     micro_ros_stm32cubemx_utils/extra_sources/microros_allocators.c
     micro_ros_stm32cubemx_utils/extra_sources/custom_memory_manager.c
