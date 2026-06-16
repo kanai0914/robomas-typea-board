@@ -1,0 +1,4 @@
+[submodule "micro-ros/micro_ros_stm32cubemx_utils"]
+	path = micro-ros/micro_ros_stm32cubemx_utils
+	url = https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
+	branch = jazzy
