@@ -5,6 +5,7 @@ extern MotorCurrent_can1* current_1;
 extern MotorCurrent_can2* current_2;
 void robomas_can::init(CAN_HandleTypeDef* hcan)
 {
+    // クラスメンバではなく、ローカルで毎回クリーンに初期化する方が安全です
     CAN_FilterTypeDef filter = {0};
 
     filter.FilterScale          = CAN_FILTERSCALE_32BIT;
@@ -15,8 +16,10 @@ void robomas_can::init(CAN_HandleTypeDef* hcan)
     filter.FilterMaskIdHigh     = 0;
     filter.FilterMaskIdLow      = 0;
 
+    // ★追加1：フィルターを「有効化」する（これがないと受信できません）
     filter.FilterActivation = ENABLE;
 
+    // ★追加2：デュアルCAN（CAN1/CAN2）のためのバンク振り分け
     if (hcan->Instance == CAN1) {
         filter.FilterBank = 0;
     } else {
